@@ -1,6 +1,6 @@
 use std::io;
 use rocket::response::{NamedFile};
-//use rocket::http::RawStr;
+use rocket::http::RawStr;
 use rocket::request::{Form, FromFormValue};
 use rocket::response::Redirect;
 use url::form_urlencoded;
@@ -30,6 +30,7 @@ impl<'v> FromFormValue<'v> for DataEntry<'v> {
 }
 */
 
+/*
 #[post("/search", data = "<data>")]
 pub fn process(data: Form<Request>) -> Result<Redirect, String> {
     if data.payload == "Hello!" {
@@ -37,4 +38,10 @@ pub fn process(data: Form<Request>) -> Result<Redirect, String> {
     } else {
         Err(format!("Unknown search term, '{}'.", data.payload))
     }
+}
+*/
+
+#[post("/search", data = "<request>")]
+pub fn process(request: Form<Request>) -> String {
+    return "Good job!".to_string()
 }
