@@ -1,6 +1,6 @@
 use std::io;
 use rocket::response::{NamedFile};
-use rocket::http::RawStr;
+//use rocket::http::RawStr;
 use rocket::request::{Form, FromFormValue};
 use rocket::response::Redirect;
 use url::form_urlencoded;
@@ -9,8 +9,8 @@ use url::form_urlencoded;
 //struct DataEntry<'r>(&'r str);
 
 #[derive(FromForm)]
-pub struct Request<'r> {
-    payload: &'r RawStr,
+pub struct Request {
+    payload: String,
     //we can add more if we want later on, for other form options...
 }
 
