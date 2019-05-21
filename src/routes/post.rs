@@ -10,7 +10,7 @@ use url::form_urlencoded;
 
 #[derive(FromForm)]
 pub struct Request {
-    payload: String,
+    searchterm: String,
     //we can add more if we want later on, for other form options...
 }
 
@@ -30,18 +30,11 @@ impl<'v> FromFormValue<'v> for DataEntry<'v> {
 }
 */
 
-/*
 #[post("/search", data = "<data>")]
 pub fn process(data: Form<Request>) -> Result<Redirect, String> {
-    if data.payload == "Hello!" {
+    if data.searchterm == "Hello!" {
         Ok(Redirect::to("/search/Hello"))
     } else {
-        Err(format!("Unknown search term, '{}'.", data.payload))
+        Err(format!("Unknown search term, '{}'.", data.searchterm))
     }
-}
-*/
-
-#[post("/search", data = "<request>")]
-pub fn process(request: Form<Request>) -> String {
-    return "Good job!".to_string()
 }
