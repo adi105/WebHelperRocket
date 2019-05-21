@@ -7,3 +7,21 @@ html {
 h1 {
   font-size: 50px;
 }
+
+#formBox {
+  height: 20px;
+  width: 30%;
+}
+
+#submitBtn {
+   -webkit-appearance: none;
+    height: 5%;
+    font-size: 14px;
+}
+
+textarea {
+  margin-top: 5%;
+  width: 50%;
+  height: 80%;
+  resize: none;
+}
