@@ -33,29 +33,30 @@ impl<'v> FromFormValue<'v> for DataEntry<'v> {
 #[post("/search", data = "<data>")]
 pub fn process(data: Form<Request>) -> Result<Redirect, String> {
     //experimentation with functions within this file below
-
-
-
-
-
-    //=====================================================
-    if data.searchterm == "Hello!" {
-        Ok(Redirect::to("/search/Hello"));
-    }
     if data.searchterm == "3+5" {
         let mut result = calculator(data.searchterm);
         result.to_string();
-        Err(format!("Your result is '{}'.", result))
+        format!("Your result is '{}'.", result);
+    }
+    //=====================================================
+    if data.searchterm == "Hello!" {
+        Ok(Redirect::to("/search/Hello"))
     } else {
         Err(format!("Unknown search term, '{}'.", data.searchterm))
     }
 }
 
 /*
-pub fn calculator(input: String) -> f64 {
-    let x:f64 = input.chars().nth(0).parse().unwrap();
-    let symbol = input[1];
-    let y = input[2].parse().unwrap();
-    return
+pub fn calculator(input: String) -> u64 {
+    let first_letter = input.chars().next().unwrap();
+    let x:u64 = first_letter.to_digit(10).unwrap().into();
+    let symbol = input.chars().nth(1).unwrap();
+    let y:u64 = input.chars().nth(2).unwrap().to_digit(10).unwrap().into();
+    let mut retval:u64 = match symbol {
+        '+' => x + y,
+        '-' => x - y,
+        '*' => 0,
+    };
+    return retval
 }
 */
