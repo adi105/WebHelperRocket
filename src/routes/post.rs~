@@ -33,13 +33,11 @@ impl<'v> FromFormValue<'v> for DataEntry<'v> {
 #[post("/search", data = "<data>")]
 pub fn process(data: Form<Request>) -> Result<Redirect, String> {
     //experimentation with functions within this file below
-    /*
     if data.searchterm == "3+5" {
         let mut result = calculator(data.searchterm);
         result.to_string();
         format!("Your result is '{}'.", result);
     }
-    */
     //=====================================================
     if data.searchterm == "Hello!" {
         Ok(Redirect::to("/search/Hello"))
