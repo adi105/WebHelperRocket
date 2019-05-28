@@ -3,17 +3,20 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Index</title>
+    <title>Result</title>
     <link rel="stylesheet" href="index.css">
   </head>
 
   <body>
-    <h1>Input Commands</h2>
-    <form action="/search" method="post" accept-charset="utf-8" action="submit.html">
-      <input id="formBox" type="text" name="searchterm" placeholder="Type Here"/>
+    <h1>Results</h2>
+    <form action="/search" method="post" accept-charset="utf-8">
+      <input id="formBox" type="text" name="searchterm" placeholder="Type Here">
       <button id="submitBtn" type="button"><a href="submit.html">Submit</a></button>
     </form>
     <textarea readonly rows= "10">
 </textarea>
+    <div>
+    <button id="goBack" type="button"><a href="index.html">Go Back</a></button>
+    </div>
   </body>
 </html>
