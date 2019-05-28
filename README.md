@@ -1,5 +1,5 @@
 # WebHelper Rocket
-## Authors: Adrian Bernat and Edward Koroteev
+**Authors: Adrian Bernat and Edward Koroteev**
 
 WebHelper Rocket is a functional web application created using Rust's Rocket framework.
 Taking inspiration from mobile helper programs, such as Siri and Alexa, WebHelper takes
