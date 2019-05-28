@@ -34,7 +34,7 @@ impl<'v> FromFormValue<'v> for DataEntry<'v> {
 pub fn process(data: Form<Request>) -> Result<Redirect, String> {
     //experimentation with functions within this file below
     if data.searchterm == "3+5" {
-        let mut result = calculator(data.searchterm);
+        let mut result = calculator(data.searchterm.to_string());
         result.to_string();
         format!("Your result is '{}'.", result);
     }
@@ -47,16 +47,17 @@ pub fn process(data: Form<Request>) -> Result<Redirect, String> {
 }
 
 /*
-pub fn calculator(input: String) -> u64 {
+pub fn calculator(input: String) -> i64 {
     let first_letter = input.chars().next().unwrap();
-    let x:u64 = first_letter.to_digit(10).unwrap().into();
+    let x:i64 = first_letter.to_digit(10).unwrap().into();
     let symbol = input.chars().nth(1).unwrap();
-    let y:u64 = input.chars().nth(2).unwrap().to_digit(10).unwrap().into();
-    let mut retval:u64 = match symbol {
-        '+' => x + y,
-        '-' => x - y,
-        '*' => 0,
-    };
+    let y:i64 = input.chars().nth(2).unwrap().to_digit(10).unwrap().into();
+    let mut retval:i64 = 0;
+    //match the symbol
+    match symbol {
+        '+' => retval = x + y,
+        '-' => retval = x - y,
+    }
     return retval
 }
 */
