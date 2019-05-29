@@ -15,3 +15,9 @@ Tasks to be implemented:
 * Craigslist Web Scraper
 * Easter Eggs!
 * (More ideas pending!)
+
+# Instructions to run
+To run this web app, simply type in `cargo run` while in the app directory. It will download dependencies, and once finished, it will launch and instruct you to access `localhost:8000`. Navigate to `localhost:8000` in your preferred web browser to see the web app. Please reference this instruction sheet for usage directions until the instructions are implemented within the web app.
+# Commands
+* `calculate <statement>` can be used to perform a calculation. The calculator takes in infix notation and supports parenthesis.
+* `craigslist <search term>` can be used to retrieve the first 10 items from a craigslist search result. This is not fully integrated into the web app yet, so please refain from using it.
