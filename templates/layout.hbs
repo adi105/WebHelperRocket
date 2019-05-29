@@ -3,23 +3,20 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Result</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Index</title>
+    <link rel="stylesheet" href="/static/index.css">
   </head>
 
   <body>
-    <h1>Results</h2>
+    <h1>Results</h1>
     <form action="/search" method="post" accept-charset="utf-8">
       <input id="formBox" type="text" name="searchterm" placeholder="Type Here">
-      <button id="submitBtn" type="button"><a href="submit.html">Submit</a></button>
+      <input type="submit" value="Login">
     </form>
-    <textarea readonly rows= "10">
-    </textarea>
+    {{~> page}}
 
     <div>
     <button id="goBack" type="button"><a href="index.html">Go Back</a></button>
-
     </div>
   </body>
-  
 </html>

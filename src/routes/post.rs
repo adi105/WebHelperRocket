@@ -1,12 +1,23 @@
+use crate::routes::{ calculator };
 use std::io;
 use rocket::response::{NamedFile};
 use rocket::http::RawStr;
 use rocket::request::{Form, FromFormValue};
 use rocket::response::Redirect;
 use url::form_urlencoded;
+use rocket_contrib::templates::{Template, handlebars};
+use regex::Regex;
 
-//#[derive(Debug)]
-//struct DataEntry<'r>(&'r str);
+use handlebars::{Helper, Handlebars, Context, RenderContext, Output, HelperResult, JsonRender};
+
+
+
+#[derive(Serialize)]
+pub struct TemplateContext {
+    query: String,
+    items: Vec<String>,
+    parent: &'static str,
+}
 
 #[derive(FromForm)]
 pub struct Request {
@@ -14,52 +25,29 @@ pub struct Request {
     //we can add more if we want later on, for other form options...
 }
 
-//some bounds checking, this is where we can "enable" new features
-/*
-impl<'v> FromFormValue<'v> for DataEntry<'v> {
-    type Error = &'static str;
-
-    fn from_form_value(v: &'v RawStr) -> Result<Self, Self::Error> {
-        //this is where we would place limitations on the string
-        if v.len() < 1 {
-            Err("This is too short!")
-        } else {
-            Ok(DataEntry(v.as_str()))
-        }
-    }
-}
-*/
-
+// This is the function which responds to the input. We use handlebars to create dynamic HTML templates
+// which make it simple to display our data on the webpage.
 #[post("/search", data = "<data>")]
-pub fn process(data: Form<Request>) -> Result<Redirect, String> {
-    //experimentation with functions within this file below
-    /*
-    if data.searchterm == "3+5" {
-        let mut result = calculator(data.searchterm.to_string());
-        result.to_string();
-        format!("Your result is '{}'.", result);
+pub fn process(data: Form<Request>) -> Template {
+    // Create a regex to detect calculator syntax
+    let calc_reg = Regex::new(r"[c,C]alculate*").unwrap();
+    let qry = &data.searchterm;
+    if calc_reg.is_match(qry) {
+        // this means we have a calculator query.
+        let expr: Vec<&str> = calc_reg.split(qry).collect();
+        let result = calculator::calculate(expr[1].to_string()).unwrap();
+        // Now create the template
+        return Template::render("result", &TemplateContext {
+            query: qry.to_string(),
+            items: vec![result],
+            parent: "layout",
+        });
     }
-    */
-    //=====================================================
-    if data.searchterm == "Hello!" {
-        Ok(Redirect::to("/search/Hello"))
-    } else {
-        Err(format!("Unknown search term, '{}'.", data.searchterm))
-    }
-}
 
-/*
-pub fn calculator(input: String) -> i64 {
-    let first_letter = input.chars().next().unwrap();
-    let x:i64 = first_letter.to_digit(10).unwrap().into();
-    let symbol = input.chars().nth(1).unwrap();
-    let y:i64 = input.chars().nth(2).unwrap().to_digit(10).unwrap().into();
-    let mut retval:i64 = 0;
-    //match the symbol
-    match symbol {
-        '+' => retval = x + y,
-        '-' => retval = x - y,
-    }
-    return retval
+    // A placeholder template for when we get an invalid query.
+    Template::render("result", &TemplateContext {
+        query: "null".to_string(),
+        items: vec!["0".to_string(), "0".to_string(), "0".to_string()],
+        parent: "layout",
+    })
 }
-*/

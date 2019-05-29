@@ -328,7 +328,7 @@ fn test_parsing() {
 // Function that performs the calculation. This should be the function that gets
 // called with user input and performs the entire procedure.
 //============================================================================
-fn calculate(statement:String) -> Result<String, String> {
+pub fn calculate(statement:String) -> Result<String, String> {
     //first we must strip the whitespace from the input
     let stripped = &strip_whitespace(statement);
     println!("Stripped:{}", stripped);
@@ -349,8 +349,4 @@ fn calculate(statement:String) -> Result<String, String> {
     //now, pass the result of the postfix cast to the math function, and return its result.
     let result = perform_math(postfix);
     return Ok(result)
-}
-
-fn main() {
-    println!("{}", calculate("22*(350/42)*7".to_string()).unwrap());
 }

@@ -1,3 +1,4 @@
 pub mod get;
 pub mod static_files;
 pub mod post;
+pub mod calculator;
