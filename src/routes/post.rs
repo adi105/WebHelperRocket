@@ -1,4 +1,4 @@
-use crate::routes::{ calculator };
+use crate::routes::{ calculator, dict_fetch };
 use std::io;
 use rocket::response::{NamedFile};
 use rocket::http::RawStr;
@@ -31,6 +31,9 @@ pub struct Request {
 pub fn process(data: Form<Request>) -> Template {
     // Create a regex to detect calculator syntax
     let calc_reg = Regex::new(r"[c,C]alculate*").unwrap();
+    // Create a regex to detect definition syntax
+    let def_reg = Regex::new(r"[d,D]efine *").unwrap();
+
     let qry = &data.searchterm;
     if calc_reg.is_match(qry) {
         // this means we have a calculator query.
@@ -40,6 +43,17 @@ pub fn process(data: Form<Request>) -> Template {
         return Template::render("result", &TemplateContext {
             query: qry.to_string(),
             items: vec![result],
+            parent: "layout",
+        });
+    } else if def_reg.is_match(qry) {
+        // This means we have a definition query.
+        let expr: Vec<&str> = def_reg.split(qry).collect();
+        let result = dict_fetch::get_definition(expr[1].to_string());
+
+        //template creation
+        return Template::render("result", &TemplateContext {
+            query: qry.to_string(),
+            items: result,
             parent: "layout",
         });
     }

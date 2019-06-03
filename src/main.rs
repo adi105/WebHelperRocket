@@ -3,6 +3,10 @@
 #[macro_use] extern crate serde_derive;
 #[macro_use] extern crate rocket_contrib;
 #[macro_use] extern crate regex;
+#[macro_use] extern crate reqwest;
+#[macro_use] extern crate select;
+#[macro_use] extern crate scraper;
+
 
 mod routes;
 use crate::routes::{ static_files, get, post };
