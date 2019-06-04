@@ -38,7 +38,12 @@ pub fn process(data: Form<Request>) -> Template {
     if calc_reg.is_match(qry) {
         // this means we have a calculator query.
         let expr: Vec<&str> = calc_reg.split(qry).collect();
-        let result = calculator::calculate(expr[1].to_string()).unwrap();
+        let func_result = calculator::calculate(expr[1].to_string());
+        let result: String;
+        match func_result {
+            Ok(n) => result = format!("{}", n),
+            Err(e) => result = format!("{}", e)
+        }
         // Now create the template
         return Template::render("result", &TemplateContext {
             query: qry.to_string(),
