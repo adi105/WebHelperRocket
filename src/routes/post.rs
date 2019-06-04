@@ -1,4 +1,4 @@
-use crate::routes::{ calculator, dict_fetch };
+use crate::routes::{ calculator, dict_fetch, cl_sweeper };
 use std::io;
 use rocket::response::{NamedFile};
 use rocket::http::RawStr;
@@ -33,6 +33,8 @@ pub fn process(data: Form<Request>) -> Template {
     let calc_reg = Regex::new(r"[c,C]alculate*").unwrap();
     // Create a regex to detect definition syntax
     let def_reg = Regex::new(r"[d,D]efine *").unwrap();
+    // Create a regex to detect craigslist syntax
+    let cl_reg = Regex::new(r"[c,C]raigslist *").unwrap();
 
     let qry = &data.searchterm;
     if calc_reg.is_match(qry) {
@@ -54,6 +56,16 @@ pub fn process(data: Form<Request>) -> Template {
         // This means we have a definition query.
         let expr: Vec<&str> = def_reg.split(qry).collect();
         let result = dict_fetch::get_definition(expr[1].to_string());
+
+        //template creation
+        return Template::render("result", &TemplateContext {
+            query: qry.to_string(),
+            items: result,
+            parent: "layout",
+        });
+    } else if cl_reg.is_match(qry) {
+        let expr: Vec<&str> = cl_reg.split(qry).collect();
+        let result = cl_sweeper::cl_scraper(expr[1].to_string());
 
         //template creation
         return Template::render("result", &TemplateContext {
