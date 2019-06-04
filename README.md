@@ -1,5 +1,5 @@
 # WebHelper Rocket
-**Authors: Adrian Bernat and Edward Koroteev**
+**Authors: Adrian Bernat and Edward Koroteev** <br>
 
 WebHelper Rocket is a functional web application created using Rust's Rocket framework.
 Taking inspiration from mobile helper programs, such as Siri and Alexa, WebHelper takes
@@ -24,3 +24,9 @@ To run this web app, simply type in `cargo run` while in the app directory. It w
 * `calculate <statement>` can be used to perform a calculation. The calculator takes in infix notation and supports parenthesis.
 * `craigslist <search term>` can be used to retrieve the first 10 items from a craigslist search result. This is not fully integrated into the web app yet, so please refain from using it.
 * `define <English word>` can be used obtain the definition of any word from oxforddictionaries.com. The command is fully functional and will inform the user if they enter something that is not valid, and catch that error.
+___
+(c) Copyright 2019 Adrian Bernat<br>
+Email: abernat@pdx.edu
+
+(c) Copyright 2019 Edward Koroteev<br>
+Email: ekoroteev@pdx.edu
