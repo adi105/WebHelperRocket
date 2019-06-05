@@ -1,11 +1,12 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde_derive;
-#[macro_use] extern crate rocket_contrib;
-#[macro_use] extern crate regex;
-#[macro_use] extern crate reqwest;
-#[macro_use] extern crate select;
-#[macro_use] extern crate scraper;
+extern crate rocket_contrib;
+extern crate regex;
+extern crate reqwest;
+extern crate select;
+extern crate scraper;
+extern crate rand;
 
 
 mod routes;

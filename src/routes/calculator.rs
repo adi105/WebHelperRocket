@@ -70,7 +70,7 @@ fn test_string_validation() {
 // to ensure that PEMDAS is followed.
 //======================================================================
 fn op_weight(operator: &char) -> u32 {
-    let mut weight:u32 = 0;
+    let weight:u32;
     match operator {
         '*' | '/' => weight = 2,
         '+' | '-' => weight = 1,

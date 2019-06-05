@@ -3,7 +3,7 @@ use scraper::{Selector, Html};
 pub fn cl_scraper(url: String) -> Vec<String> {
   //creation of the URL=====================================================================
   if url == "" {
-	  return vec!["You have entered an invalid statement."];
+	  return vec!["You have entered an invalid statement.".to_string()];
   }
   let mut cl_url: String = "https://portland.craigslist.org/search/sss?query=".to_string();
   let mut new_url: String = "".to_string();

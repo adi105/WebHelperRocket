@@ -562,6 +562,7 @@ dependencies = [
 name = "hello_rocket"
 version = "0.1.0"
 dependencies = [
+ "rand 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "regex 1.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "reqwest 0.9.17 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",

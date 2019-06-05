@@ -7,7 +7,6 @@
 //    -Adrian
 //========================================================================
 
-use scraper::{ Html };
 use regex::Regex;
 
 // this function serves to obtain the definition of the word provided from dictionary.com
