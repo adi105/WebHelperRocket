@@ -42,7 +42,7 @@ pub fn process(data: Form<Request>) -> Template {
     let ip_reg = Regex::new(r"[iI][pP] *").unwrap();
 
 
-    let qry = &data.searchterm
+    let qry = &data.searchterm;
     if ip_reg.is_match(qry) {
         // This means the user wants to get their IP address
         let func_result = easter::get_ip();
