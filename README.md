@@ -17,7 +17,9 @@ Tasks to be implemented:
 
 # Instructions to run
 **Since this project runs on the Rust Rocket framework, it requires one to be running Rust Nightly.** This can be done by executing `rustup default nightly`. This will update your nightly version, then set that as default.  
-To run this web app, simply type in `cargo run` while in the app directory. It will download dependencies, and once finished, it will launch and instruct you to access `localhost:8000`. Navigate to `localhost:8000` in your preferred web browser to see the web app. Please reference this instruction sheet for usage directions until the instructions are implemented within the web app.
+To run this web app, simply type in `cargo run` while in the app directory. It will download dependencies, and once finished, it will launch and instruct you to access `localhost:8000`. Navigate to `localhost:8000` in your preferred web browser to see the web app. Please reference this instruction sheet for usage directions until the instructions are implemented within the web app. **This app assumes a valid internet connection exists.** Many features utilize
+web pages and web scraping to return content, and the program will throw a panic if no internet access is present if
+it is trying to use internet access.
 # Commands
 * `calculate <statement>` can be used to perform a calculation. The calculator takes in infix notation and supports parenthesis.
 * `craigslist <search term>` can be used to retrieve the first 10 items from a craigslist search result.
@@ -25,6 +27,7 @@ To run this web app, simply type in `cargo run` while in the app directory. It w
 * `riddle` can be used to obtain a riddle.
 * `ping` can be used to get an annoying output.
 * `echo <term` echoes the given term.
+* `ip` returns the current IP address of the user.
 ___
 (c) Copyright 2019 Adrian Bernat<br>
 Email: abernat@pdx.edu

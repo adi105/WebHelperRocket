@@ -38,10 +38,20 @@ pub fn process(data: Form<Request>) -> Template {
     let ping_reg = Regex::new(r"[pP]ing *").unwrap();
     // Regex for echo
     let echo_reg = Regex::new(r"[eE]cho +(.*) *").unwrap();
+    // Regex for IP functionality
+    let ip_reg = Regex::new(r"[iI][pP] *").unwrap();
 
 
-    let qry = &data.searchterm;
-    if riddle_reg.is_match(qry) {
+    let qry = &data.searchterm
+    if ip_reg.is_match(qry) {
+        // This means the user wants to get their IP address
+        let func_result = easter::get_ip();
+        return Template::render("result", &TemplateContext {
+            query: qry.to_string(),
+            items: func_result,
+            parent: "layout",
+        });
+    } else if riddle_reg.is_match(qry) {
         // This means that the user wants a riddle.
         let func_result = easter::riddle_generator();
         return Template::render("result", &TemplateContext {
@@ -50,6 +60,7 @@ pub fn process(data: Form<Request>) -> Template {
             parent: "layout",
         });
     } else if ping_reg.is_match(qry) {
+        // Match for the ping pong easter egg
         let func_result = easter::ping_pong();
         return Template::render("result", &TemplateContext {
             query: qry.to_string(),
@@ -57,6 +68,7 @@ pub fn process(data: Form<Request>) -> Template {
             parent: "layout",
         });
     } else if echo_reg.is_match(qry) {
+        // Match for the echo easter egg
         let caps = echo_reg.captures(qry).unwrap();
         let func_result = easter::resp_echo(caps.get(1).unwrap().as_str().to_string());
         return Template::render("result", &TemplateContext {
