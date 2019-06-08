@@ -27,7 +27,9 @@ Tasks to be implemented:
 * Easter Eggs!
 
 # Instructions to run
-**Since this project runs on the Rust Rocket framework, it requires one to be running Rust Nightly.** This can be done by executing `rustup default nightly`. This will update your nightly version, then set that as default.  
+This program runs using Rust. Please refer to Rust's [install page](https://www.rust-lang.org/tools/install) for instructions on how
+to install Rust.
+**Since this project runs on the Rust Rocket framework, it requires one to be running Rust Nightly.** This can be done by executing `rustup default nightly`. This will update your nightly version, then set that as default. </br>  
 To run this web app, simply type in `cargo run` while in the app directory. It will download dependencies, and once finished, it will launch and instruct you to access `localhost:8000`. Navigate to `localhost:8000` in your preferred web browser to see the web app. Please reference this instruction sheet for usage directions until the instructions are implemented within the web app. **This app assumes a valid internet connection exists.** Many features utilize
 web pages and web scraping to return content, and the program will throw a panic if no internet access is present if
 it is trying to use internet access.
