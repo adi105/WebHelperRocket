@@ -3,7 +3,18 @@
 
 WebHelper Rocket is a functional web application created using Rust's Rocket framework.
 Taking inspiration from mobile helper programs, such as Siri and Alexa, WebHelper takes
-in input from a text field and, based upon that input, can perform a variety of tasks.
+in input from a text field and, based upon that input, can perform a variety of tasks. The goal
+of this project was to create a modular, functional Rust web application that was designed in such
+a way that adding new features was seamless and effortless. Throughout the course of the project, we
+had to figure out ways to deal with the various issues that came up and keep pushing forward with
+the code no matter what. The project uses Rust's Rocket framework for routing, and Handlebars
+to create dynamic web pages in response to the requests that arrive. While there were some features
+that we had difficulty implementing, such as redirects to outside pages using the same POST function,
+we more or less created all of the applications that we wanted in our project. Valuable experience
+came via coding with library functions, iterators, and other concepts that were brand new to us, and
+we feel that our skills as coders grew greatly. Anything is possible with enough determination and
+research!</br>
+___
 Tasks to be implemented:
 * Calculator
   * The idea is to make it an integer calculator that accepts a string, i.e. "52+47*3",
